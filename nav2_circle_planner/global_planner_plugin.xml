@@ -1,0 +1,5 @@
+<library path="nav2_circle_planner_plugin">
+	<class name="nav2_circle_planner/Circle" type="nav2_circle_planner::Circle" base_class_type="nav2_core::GlobalPlanner">
+	  <description>This is an example plugin which produces circular path.</description>
+	</class>
+</library>
