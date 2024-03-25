@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'kpi_generator = nav2_controller_kpi_generator.kpi_generator:main'
+            'kpi_generator = nav2_controller_kpi_generator.kpi_generator:main',
+            'goal_checking = nav2_controller_kpi_generator.goal_checking:main'
         ],
     },
 )

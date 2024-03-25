@@ -89,18 +89,9 @@ nav_msgs::msg::Path Circle::createPlan(
                             std::pow(goal.pose.position.y - center_y, 2));
   double theta_start = std::atan2(initial_position_.y - center_y, initial_position_.x - center_x);
 
-  // Calculate angle between start and goal positions
-  double angle_diff = std::atan2(
-      goal.pose.position.y - initial_position_.y,
-      goal.pose.position.x - initial_position_.x);
 
-  // Ensure the angle difference is positive
-  if (angle_diff < 0) {
-      angle_diff += 2 * M_PI;
-  }
 
-  
-  //double theta_end = theta_start + angle_diff;
+ 
 
  
   int circle_points = 200; 
@@ -108,7 +99,7 @@ nav_msgs::msg::Path Circle::createPlan(
 
   // Generate circular path
   for (int i = 0; i < circle_points-1; ++i) {
-    double theta = theta_start + i * (6.25/100 );
+    double theta = theta_start + i * (6.2/100 );
     geometry_msgs::msg::PoseStamped pose;
     pose.pose.position.x = center_x + radius * std::cos(theta);
     pose.pose.position.y = center_y + radius * std::sin(theta);
