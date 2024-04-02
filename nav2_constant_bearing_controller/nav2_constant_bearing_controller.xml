@@ -1,0 +1,10 @@
+<class_libraries>
+    <library path="nav2_constant_bearing_controller">
+        <class type="nav2_constant_bearing_controller::ConstantBearingController" base_class_type="nav2_core::Controller">
+            <description>
+                nav2_constant_bearing_controller
+            </description>
+        </class>
+    </library>
+</class_libraries>
+
