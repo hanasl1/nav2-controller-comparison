@@ -276,7 +276,6 @@ protected:
    */
 
 
-
   rcl_interfaces::msg::SetParametersResult
   dynamicParametersCallback(std::vector<rclcpp::Parameter> parameters);
 

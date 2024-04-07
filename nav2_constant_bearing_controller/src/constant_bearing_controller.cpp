@@ -323,37 +323,33 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
 
   auto carrot_pose = getLookAheadPoint(lookahead_dist, transformed_plan);
   carrot_pub_->publish(createCarrotMsg(carrot_pose));
-  //Code for constant bearing
-  //double bearing_to_lookahead = atan2(carrot_pose.pose.position.y, carrot_pose.pose.position.x);
-  double relative_x = pose.pose.position.x - plan_center.pose.position.x;
-  double relative_y = pose.pose.position.y - plan_center.pose.position.y;
-  double tangent_angle = atan2(relative_y, relative_x) + M_PI/2;
-  double current_heading = tf2::getYaw(pose.pose.orientation);
-  //end of code for constant bearing
 
-
+  double tangent_angle = atan2(carrot_pose.pose.position.y - plan_center.pose.position.y, carrot_pose.pose.position.x - plan_center.pose.position.x ) + M_PI;
 
   double linear_vel, angular_vel;
 
   // Find distance^2 to look ahead point (carrot) in robot base frame
-  // This is the chord length of the circle
-  // const double carrot_dist2 =
-  //   (carrot_pose.pose.position.x * carrot_pose.pose.position.x) +
-  //   (carrot_pose.pose.position.y * carrot_pose.pose.position.y);
+  //This is the chord length of the circle
+  const double carrot_dist2 =
+    (carrot_pose.pose.position.x * carrot_pose.pose.position.x) +
+    (carrot_pose.pose.position.y * carrot_pose.pose.position.y);
 
   // Find curvature of circle (k = 1 / R)
-  // double curvature = 0.0;
-  // if (carrot_dist2 > 0.001) {
-  //   curvature = 2.0 * carrot_pose.pose.position.y / carrot_dist2;
-  // }
+  double curvature = 0.0;
+  if (carrot_dist2 > 0.001) {
+    curvature = 2.0 * carrot_pose.pose.position.y / carrot_dist2;
+  }
 
   // Setting the velocity direction
-  // double sign = 1.0;
-  // if (allow_reversing_) {
-  //   sign = carrot_pose.pose.position.x >= 0.0 ? 1.0 : -1.0;
-  // }
+  double sign = 1.0;
+  if (allow_reversing_) {
+    sign = carrot_pose.pose.position.x >= 0.0 ? 1.0 : -1.0;
+  }
 
   linear_vel = desired_linear_vel_;
+
+
+
 
   // Make sure we're in compliance with basic constraints
   double angle_to_heading;
@@ -363,18 +359,14 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
   } else if (shouldRotateToPath(carrot_pose, angle_to_heading)) {
     rotateToHeading(linear_vel, angular_vel, angle_to_heading, speed);
   } else {
-    // applyConstraints(
-    //   curvature, speed,
-    //   costAtPose(pose.pose.position.x, pose.pose.position.y), transformed_plan,
-    //   linear_vel, sign);
+    applyConstraints(
+      curvature, speed,
+      costAtPose(pose.pose.position.x, pose.pose.position.y), transformed_plan,
+      linear_vel, sign);
 
     // // Apply curvature to angular velocity after constraining linear velocity
-    // angular_vel = linear_vel * curvature;
+     angular_vel = linear_vel * curvature;
 
-    double K = 0.5;//gain
-    double heading_error = tangent_angle - current_heading;
-    heading_error = atan2(sin(heading_error), cos(heading_error)); //map to -pi to pi
-    angular_vel = K*heading_error;
   }
 
   // Collision checking on this velocity heading
@@ -384,9 +376,15 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
   }
 
   // populate and return message
+  //////////////////////////////////////////////////////////////////////////////////////
+  geometry_msgs::msg::TwistStamped carrot_vel;
+  carrot_vel.twist.linear.x = linear_vel + cos(tangent_angle) * angular_vel;
+  carrot_vel.twist.linear.y = sin(tangent_angle) * angular_vel;
+  /////////////////////////////////////////////////////////////////////////////////////////
   geometry_msgs::msg::TwistStamped cmd_vel;
   cmd_vel.header = pose.header;
-  cmd_vel.twist.linear.x = linear_vel;
+  cmd_vel.twist.linear.x = linear_vel + carrot_vel.twist.linear.x;
+  cmd_vel.twist.linear.y = carrot_vel.twist.linear.y ;
   cmd_vel.twist.angular.z = angular_vel;
   return cmd_vel;
 }
