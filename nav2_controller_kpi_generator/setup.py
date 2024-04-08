@@ -21,7 +21,9 @@ setup(
     entry_points={
         'console_scripts': [
             'kpi_generator = nav2_controller_kpi_generator.kpi_generator:main',
-            'goal_checking = nav2_controller_kpi_generator.goal_checking:main'
+            'goal_checking = nav2_controller_kpi_generator.goal_checking:main',
+            'cmd_vel_formatter = nav2_controller_kpi_generator.cmd_vel_formatter:main'
+
         ],
     },
 )
