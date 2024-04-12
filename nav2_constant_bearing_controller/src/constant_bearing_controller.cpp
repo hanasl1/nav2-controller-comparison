@@ -323,13 +323,8 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
 
   auto carrot_pose = getLookAheadPoint(lookahead_dist, transformed_plan);
   carrot_pub_->publish(createCarrotMsg(carrot_pose));
-  //Code for constant bearing
+
   double tangent_angle =atan2(carrot_pose.pose.position.y-plan_center.pose.position.y, carrot_pose.pose.position.x-plan_center.pose.position.x) - M_PI/2;
-  double los_angle = atan2(carrot_pose.pose.position.y, carrot_pose.pose.position.x);//atan2(carrot_pose.pose.position.y - pose.pose.position.y , carrot_pose.pose.position.x- pose.pose.position.x);
-  //double current_heading = tf2::getYaw(pose.pose.orientation);
-  //end of code for constant bearing
-
-
 
   double linear_vel, angular_vel;
   
@@ -384,11 +379,18 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
   }
 
   // populate and return message
+
+  geometry_msgs::msg::TwistStamped carrot_vel;
+  carrot_vel.twist.linear.x = linear_vel + cos(tangent_angle) * linear_vel;
+  carrot_vel.twist.linear.y = sin(tangent_angle) * angular_vel;
+  geometry_msgs::msg::TwistStamped cmd_vel_rpp;
+  cmd_vel_rpp.twist.linear.x = linear_vel ;
+  cmd_vel_rpp.twist.angular.z = angular_vel;
   geometry_msgs::msg::TwistStamped cmd_vel;
   cmd_vel.header = pose.header;
-  cmd_vel.twist.linear.x = desired_linear_vel_ * cos(los_angle+tangent_angle);
-  //nema glitcheva
-  cmd_vel.twist.angular.z = desired_linear_vel_* sin(los_angle+tangent_angle);
+  cmd_vel.twist.linear.x = carrot_vel.twist.linear.x + cmd_vel_rpp.twist.linear.x;
+  cmd_vel.twist.linear.y = carrot_vel.twist.linear.y + cmd_vel_rpp.twist.linear.y;
+  cmd_vel.twist.angular.z = angular_vel;
   return cmd_vel;
 }
 
