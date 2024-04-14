@@ -1,41 +1,42 @@
+import numpy as np
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32MultiArray
 
-class VelocityToPWMNode(Node):
+class VelocityToForceNode(Node):
     def __init__(self):
-        super().__init__('velocity_to_pwm_node')
+        super().__init__('velocity_to_force_node')
         self.subscription = self.create_subscription(
             Twist,
             'cmd_vel',
             self.listener_callback,
             10)
-        self.subscription  # prevent unused variable warning
-
         self.publisher = self.create_publisher(
             Float32MultiArray,
             'marus_boat/pwm_out',
             10)
 
+        # Placeholder for the inverse allocation matrix, adjust as necessary for your application
+        self.inverse_allocation_matrix = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+
     def listener_callback(self, msg):
-        pwm_values = Float32MultiArray()
+        force_commands = Float32MultiArray()
 
-        # Example transformation: Directly mapping linear x and angular z to PWM.
-        # You should adjust the logic here based on your specific requirements and hardware setup.
-        linear_pwm = msg.linear.x * 100  # Example scaling factor
-        angular_pwm = msg.angular.z * 50  # Example scaling factor
+        # Convert velocity to force using the inverse allocation matrix
+        tau = np.array([msg.linear.x, msg.linear.y, msg.angular.z])
+        force_array = np.matmul(self.inverse_allocation_matrix, tau)
 
-        pwm_values.data = [linear_pwm + angular_pwm,linear_pwm- angular_pwm]
+        force_commands.data = force_array.tolist()
 
-        self.publisher.publish(pwm_values)
-        self.get_logger().info('Publishing: "%s"' % pwm_values.data)
+        self.publisher.publish(force_commands)
+        self.get_logger().info('Publishing force commands: %s' % force_commands.data)
 
 def main(args=None):
     rclpy.init(args=args)
-    velocity_to_pwm_node = VelocityToPWMNode()
-    rclpy.spin(velocity_to_pwm_node)
-    velocity_to_pwm_node.destroy_node()
+    velocity_to_force_node = VelocityToForceNode()
+    rclpy.spin(velocity_to_force_node)
+    velocity_to_force_node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':

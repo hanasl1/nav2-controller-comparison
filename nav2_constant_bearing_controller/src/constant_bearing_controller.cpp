@@ -324,12 +324,13 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
   auto carrot_pose = getLookAheadPoint(lookahead_dist, transformed_plan);
   carrot_pub_->publish(createCarrotMsg(carrot_pose));
 
-  double tangent_angle = atan2(carrot_pose.pose.position.y - plan_center.pose.position.y, carrot_pose.pose.position.x - plan_center.pose.position.x ) + M_PI;
+  double tangent_angle =atan2(carrot_pose.pose.position.y-plan_center.pose.position.y, carrot_pose.pose.position.x-plan_center.pose.position.x) - M_PI/2;
 
   double linear_vel, angular_vel;
+  
 
   // Find distance^2 to look ahead point (carrot) in robot base frame
-  //This is the chord length of the circle
+  // This is the chord length of the circle
   const double carrot_dist2 =
     (carrot_pose.pose.position.x * carrot_pose.pose.position.x) +
     (carrot_pose.pose.position.y * carrot_pose.pose.position.y);
@@ -348,16 +349,15 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
 
   linear_vel = desired_linear_vel_;
 
-
-
-
   // Make sure we're in compliance with basic constraints
   double angle_to_heading;
   if (shouldRotateToGoalHeading(carrot_pose)) {
     double angle_to_goal = tf2::getYaw(transformed_plan.poses.back().pose.orientation);
     rotateToHeading(linear_vel, angular_vel, angle_to_goal, speed);
+    
   } else if (shouldRotateToPath(carrot_pose, angle_to_heading)) {
     rotateToHeading(linear_vel, angular_vel, angle_to_heading, speed);
+    
   } else {
     applyConstraints(
       curvature, speed,
@@ -365,8 +365,11 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
       linear_vel, sign);
 
     // // Apply curvature to angular velocity after constraining linear velocity
-     angular_vel = linear_vel * curvature;
+    // angular_vel = linear_vel * curvature;
 
+    ////map to -pi to pi
+    angular_vel = desired_linear_vel_ * curvature;
+    
   }
 
   // Collision checking on this velocity heading
@@ -376,15 +379,17 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
   }
 
   // populate and return message
-  //////////////////////////////////////////////////////////////////////////////////////
+
   geometry_msgs::msg::TwistStamped carrot_vel;
-  carrot_vel.twist.linear.x = linear_vel + cos(tangent_angle) * angular_vel;
+  carrot_vel.twist.linear.x = linear_vel + cos(tangent_angle) * linear_vel;
   carrot_vel.twist.linear.y = sin(tangent_angle) * angular_vel;
-  /////////////////////////////////////////////////////////////////////////////////////////
+  geometry_msgs::msg::TwistStamped cmd_vel_rpp;
+  cmd_vel_rpp.twist.linear.x = linear_vel ;
+  cmd_vel_rpp.twist.angular.z = angular_vel;
   geometry_msgs::msg::TwistStamped cmd_vel;
   cmd_vel.header = pose.header;
-  cmd_vel.twist.linear.x = linear_vel + carrot_vel.twist.linear.x;
-  cmd_vel.twist.linear.y = carrot_vel.twist.linear.y ;
+  cmd_vel.twist.linear.x = carrot_vel.twist.linear.x + cmd_vel_rpp.twist.linear.x;
+  cmd_vel.twist.linear.y = carrot_vel.twist.linear.y + cmd_vel_rpp.twist.linear.y;
   cmd_vel.twist.angular.z = angular_vel;
   return cmd_vel;
 }
@@ -410,7 +415,7 @@ void ConstantBearingController::rotateToHeading(
   const double & angle_to_path, const geometry_msgs::msg::Twist & curr_speed)
 {
   // Rotate in place using max angular velocity / acceleration possible
-  linear_vel = 0.0;
+  linear_vel = 0;
   const double sign = angle_to_path > 0.0 ? 1.0 : -1.0;
   angular_vel = sign * rotate_to_heading_angular_vel_;
 
@@ -418,6 +423,7 @@ void ConstantBearingController::rotateToHeading(
   const double min_feasible_angular_speed = curr_speed.angular.z - max_angular_accel_ * dt;
   const double max_feasible_angular_speed = curr_speed.angular.z + max_angular_accel_ * dt;
   angular_vel = std::clamp(angular_vel, min_feasible_angular_speed, max_feasible_angular_speed);
+  
 }
 
 geometry_msgs::msg::Point ConstantBearingController::circleSegmentIntersection(
