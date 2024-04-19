@@ -27,8 +27,6 @@ void Circle::configure(
     node_, name_ + ".interpolation_resolution", rclcpp::ParameterValue(
       0.1));
   node_->get_parameter(name_ + ".interpolation_resolution", interpolation_resolution_);
-
-  
 }
 
 void Circle::cleanup()
@@ -85,15 +83,12 @@ nav_msgs::msg::Path Circle::createPlan(
   }
 
   // Calculate circle parameters using the stored initial position
-  double center_x =  goal.pose.position.x;
-  double center_y = goal.pose.position.y;
-  double radius = std::sqrt(std::pow(initial_position_.x - goal.pose.position.x, 2) +
-                            std::pow(initial_position_.y - goal.pose.position.y, 2));
+  double center_x = (initial_position_.x + goal.pose.position.x) / 2.0;
+  double center_y = (initial_position_.y + goal.pose.position.y) / 2.0;
+  double radius = std::sqrt(std::pow(goal.pose.position.x - center_x, 2) +
+                            std::pow(goal.pose.position.y - center_y, 2));
   double theta_start = std::atan2(initial_position_.y - center_y, initial_position_.x - center_x);
 
-
-
- 
 
  
   int circle_points = 200; 

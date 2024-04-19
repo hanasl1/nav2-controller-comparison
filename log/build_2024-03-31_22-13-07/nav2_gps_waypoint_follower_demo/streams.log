@@ -1,0 +1,72 @@
+[0.588s] Invoking command in '/home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/nav2_gps_waypoint_follower_demo': PYTHONPATH=/home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/nav2_gps_waypoint_follower_demo build --build-base /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build install --record /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/install.log --single-version-externally-managed install_data
+[0.822s] running egg_info
+[0.823s] creating ../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info
+[0.823s] writing ../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/PKG-INFO
+[0.823s] writing dependency_links to ../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/dependency_links.txt
+[0.823s] writing entry points to ../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/entry_points.txt
+[0.823s] writing requirements to ../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/requires.txt
+[0.823s] writing top-level names to ../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/top_level.txt
+[0.823s] writing manifest file '../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'
+[0.825s] reading manifest file '../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'
+[0.826s] writing manifest file '../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info/SOURCES.txt'
+[0.826s] running build
+[0.826s] running build_py
+[0.826s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build
+[0.826s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib
+[0.826s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo
+[0.827s] copying nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo
+[0.827s] copying nav2_gps_waypoint_follower_demo/interactive_waypoint_follower.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo
+[0.827s] copying nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo
+[0.827s] copying nav2_gps_waypoint_follower_demo/__init__.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo
+[0.827s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/utils
+[0.827s] copying nav2_gps_waypoint_follower_demo/utils/gps_utils.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/utils
+[0.827s] copying nav2_gps_waypoint_follower_demo/utils/__init__.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/utils
+[0.828s] running install
+[0.828s] running install_lib
+[0.828s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo
+[0.828s] copying /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo
+[0.828s] copying /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/interactive_waypoint_follower.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo
+[0.828s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/utils
+[0.828s] copying /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/utils/gps_utils.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/utils
+[0.829s] copying /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/utils/__init__.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/utils
+[0.829s] copying /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo
+[0.829s] copying /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build/lib/nav2_gps_waypoint_follower_demo/__init__.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo
+[0.829s] byte-compiling /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/gps_waypoint_logger.py to gps_waypoint_logger.cpython-310.pyc
+[0.830s] byte-compiling /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/interactive_waypoint_follower.py to interactive_waypoint_follower.cpython-310.pyc
+[0.830s] byte-compiling /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/utils/gps_utils.py to gps_utils.cpython-310.pyc
+[0.830s] byte-compiling /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/utils/__init__.py to __init__.cpython-310.pyc
+[0.831s] byte-compiling /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/logged_waypoint_follower.py to logged_waypoint_follower.cpython-310.pyc
+[0.831s] byte-compiling /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo/__init__.py to __init__.cpython-310.pyc
+[0.831s] running install_data
+[0.831s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/ament_index
+[0.831s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/ament_index/resource_index
+[0.831s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/ament_index/resource_index/packages
+[0.832s] copying resource/nav2_gps_waypoint_follower_demo -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/ament_index/resource_index/packages
+[0.832s] copying package.xml -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo
+[0.832s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/launch
+[0.832s] copying launch/gps_waypoint_follower.launch.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/launch
+[0.832s] copying launch/dual_ekf_navsat.launch.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/launch
+[0.832s] copying launch/gazebo_gps_world.launch.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/launch
+[0.832s] copying launch/mapviz.launch.py -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/launch
+[0.832s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/config
+[0.832s] copying config/dual_ekf_navsat_params.yaml -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/config
+[0.832s] copying config/test_params.yaml -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/config
+[0.832s] copying config/gps_wpf_demo.mvc -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/config
+[0.832s] copying config/demo_waypoints.yaml -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/config
+[0.832s] copying config/nav2_no_map_params.yaml -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/config
+[0.832s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/urdf
+[0.832s] copying urdf/turtlebot3_waffle_gps.urdf -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/urdf
+[0.833s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/worlds
+[0.833s] copying worlds/sonoma_raceway.world -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/worlds
+[0.833s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/models
+[0.833s] creating /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/models/turtlebot_waffle_gps
+[0.833s] copying models/turtlebot_waffle_gps/model.sdf -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/models/turtlebot_waffle_gps
+[0.833s] copying models/turtlebot_waffle_gps/model.config -> /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/share/nav2_gps_waypoint_follower_demo/models/turtlebot_waffle_gps
+[0.833s] running install_egg_info
+[0.835s] Copying ../build/nav2_gps_waypoint_follower_demo/nav2_gps_waypoint_follower_demo.egg-info to /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages/nav2_gps_waypoint_follower_demo-0.0.1-py3.10.egg-info
+[0.836s] running install_scripts
+[0.854s] Installing gps_waypoint_logger script to /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo
+[0.854s] Installing interactive_waypoint_follower script to /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo
+[0.854s] Installing logged_waypoint_follower script to /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/nav2_gps_waypoint_follower_demo
+[0.855s] writing list of installed files to '/home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/install.log'
+[0.878s] Invoked command in '/home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/nav2_gps_waypoint_follower_demo' returned '0': PYTHONPATH=/home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/prefix_override:/home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/install/nav2_gps_waypoint_follower_demo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../build/nav2_gps_waypoint_follower_demo build --build-base /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/build install --record /home/hanaslipogor/nav2_ws/src/nav2-controller-comparison/build/nav2_gps_waypoint_follower_demo/install.log --single-version-externally-managed install_data

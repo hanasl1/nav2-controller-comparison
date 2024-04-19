@@ -1,0 +1,9 @@
+<class_libraries>
+    <library path="nav2_line_of_sight_controller">
+        <class type="nav2_line_of_sight_controller:PurePursuitController" base_class_type="nav2_core::Controller">
+            <description>
+                nav2_line_of_sight_controller
+            </description>
+        </class>
+    </library>
+</class_libraries>
