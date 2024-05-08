@@ -50,8 +50,8 @@ def main():
 
     goal_pose = PoseStamped()
     goal_pose.header.frame_id = 'map'
-    goal_pose.pose.position.x = 3.0
-    goal_pose.pose.position.y = 3.0
+    goal_pose.pose.position.x = 4.0
+    goal_pose.pose.position.y = 4.0
     goal_pose.pose.position.z = 0.0
 
     navigation_client.send_goal(goal_pose)
