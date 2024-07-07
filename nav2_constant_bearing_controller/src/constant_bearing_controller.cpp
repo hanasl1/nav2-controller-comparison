@@ -324,7 +324,7 @@ geometry_msgs::msg::TwistStamped ConstantBearingController::computeVelocityComma
   auto carrot_pose = getLookAheadPoint(lookahead_dist, transformed_plan);
   carrot_pub_->publish(createCarrotMsg(carrot_pose));
 
-  double tangent_angle =atan2(carrot_pose.pose.position.y-plan_center.pose.position.y, carrot_pose.pose.position.x-plan_center.pose.position.x) - M_PI/2;
+  double tangent_angle =atan2(carrot_pose.pose.position.y - pose.pose.position.y, carrot_pose.pose.position.x - pose.pose.position.x) - M_PI/2;
 
   double linear_vel, angular_vel;
   

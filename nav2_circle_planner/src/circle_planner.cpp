@@ -91,12 +91,12 @@ nav_msgs::msg::Path Circle::createPlan(
 
 
  
-  int circle_points = 30; 
+  int circle_points = 50; 
   //double theta_increment = (theta_end - theta_start) / circle_points;
 
   // Generate circular path
   for (int i = 0; i < circle_points-1; ++i) {
-    double theta = theta_start +i * (2*M_PI/30 );
+    double theta = theta_start +i * (2*M_PI/50 );
     geometry_msgs::msg::PoseStamped pose;
     pose.pose.position.x = center_x + radius * std::cos(theta);
     pose.pose.position.y = center_y + radius * std::sin(theta);
